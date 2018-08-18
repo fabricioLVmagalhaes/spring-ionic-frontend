@@ -11,5 +11,10 @@
 
 
 <ion-content padding>
-  <p>página de categorias</p>
+  <ion-list>
+  <!--botão com metodo para inserir um botão para cada item da lista-->
+    <button ion-item *ngFor="let item of items">
+      <h2>{{ item.nome }}</h2>      
+    </button>
+  </ion-list>
 </ion-content>
