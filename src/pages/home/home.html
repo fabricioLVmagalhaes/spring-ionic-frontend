@@ -7,12 +7,13 @@
   <form>
       <ion-item>
           <ion-label stacked>email</ion-label>
-          <ion-input type="text"></ion-input>
+          <!--campo com binding com objeto creds.email declarado no home.ts-->
+          <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>
       </ion-item>
       
       <ion-item>
           <ion-label stacked>senha</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
       </ion-item>
       <button ion-button block outline (click)="login()">entrar</button>
   </form>
