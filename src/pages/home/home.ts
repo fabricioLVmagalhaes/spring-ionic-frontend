@@ -37,7 +37,7 @@ export class HomePage {
   login(){
     this.auth.authenticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get(`Authorization`));
+        this.auth.successfulLogin(response.headers.get(`Authorization`));//passa o token para ser armazenado
         this.navCtrl.setRoot("CategoriasPage");
       },
     error => {});
