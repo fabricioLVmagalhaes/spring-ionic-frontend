@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx'; // IMPORTANTE: IMPORT ATUALIZADO
+import { StorageService } from '../services/storage.service';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+
+    constructor(public storage: StorageService){        
+    }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         //console.log("Passou no interceptor");
@@ -21,8 +25,20 @@ export class ErrorInterceptor implements HttpInterceptor {
             console.log("Erro detectado pelo interceptor:");
             console.log(errorObj);
 
+            switch(errorObj.status){
+                //trata o erro de acesso não autorizado
+                case 403:
+                this.handle403();
+                break;
+
+            }
+
             return Observable.throw(errorObj);
         }) as any;
+    }
+    //metodo auxiliar para limpar o localStorage caso seja detectado um usuário inválido
+    handle403(){
+        this.storage.setLocalUser(null);
     }
 }
 
