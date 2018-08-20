@@ -23,8 +23,13 @@ export class ProdutosPage {
     this.produtoService.findByCategoria(categoria_id)
       .subscribe(response => {
         this.items = response['content'];//[content]-como resposta do backende e paginada pega somente content
-      },
-      error => {});
+    },
+    error => {});
     
   }
+
+  showDetail(){ //metodo para abrir pagina ProdutoDetailPage
+    this.navCtrl.push('ProdutoDetailPage');
+  }
+
 }
