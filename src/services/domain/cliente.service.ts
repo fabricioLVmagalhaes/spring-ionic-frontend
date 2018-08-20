@@ -17,4 +17,15 @@ export class ClienteService{
             `${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 
+    insert(obj : ClienteDTO) {
+            return this.http.post(
+            `${API_CONFIG.baseUrl}/clientes`,
+            obj,
+            {
+                observe: 'response',
+                responseType: 'text'// tipo texto pois o retorno vem com o corpo vazio e poderia dar um erro de parse json
+            }
+        );
+    }
+
 }
