@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Produtos</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list>
+      <button ion-item *ngFor="let item of items">
+        <h2>{{item.nome}}</h2>
+        <p>{{item.preco | currency}}</p> <!--currency - formatar o número ao estilo moéda-->
+      </button>
+    </ion-list>
+  </ion-content>
