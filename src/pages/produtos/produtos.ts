@@ -28,8 +28,8 @@ export class ProdutosPage {
     
   }
 
-  showDetail(){ //metodo para abrir pagina ProdutoDetailPage
-    this.navCtrl.push('ProdutoDetailPage');
+  showDetail(produto_id : string){ //metodo para abrir pagina ProdutoDetailPage
+    this.navCtrl.push('ProdutoDetailPage', {produto_id: produto_id});
   }
 
 }
