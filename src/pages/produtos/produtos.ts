@@ -10,7 +10,9 @@ import { ProdutoService } from '../../services/domain/produto.service';
 })
 export class ProdutosPage {
 
-  items : ProdutoDTO[];
+  items : ProdutoDTO[] = [];//iniciar lista vazia para sempre que buscar nova pagina com infinity scroll concatenar a lista
+
+  page : number = 0;
 
   constructor(
     public navCtrl: NavController, 
@@ -27,10 +29,12 @@ export class ProdutosPage {
   loadData(){
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();//chama a janela de loading
-    this.produtoService.findByCategoria(categoria_id)
+    this.produtoService.findByCategoria(categoria_id, this.page, 10)
       .subscribe(response => {
-        this.items = response['content'];//[content]-como resposta do backende e paginada pega somente content
+        this.items = this.items.concat(response['content']);//[content]-como resposta do backende e paginada pega somente content
         loader.dismiss();
+        console.log(this.page);
+        console.log(this.items);
     },
     error => {
       loader.dismiss();
@@ -52,9 +56,19 @@ export class ProdutosPage {
   }
 
   doRefresh(refresher) {
+    this.page=0;
+    this.items=[];
     this.loadData();
     setTimeout(() => {
       refresher.complete();
+    }, 1000);
+  }
+
+  doInfinite(infiniteScroll) { 
+    this.page++;
+    this.loadData();  
+    setTimeout(() => {
+      infiniteScroll.complete();
     }, 1000);
   }
 

@@ -20,4 +20,7 @@
         <p>{{item.preco | currency}}</p> <!--currency - formatar o número ao estilo moéda-->
       </button>
     </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </ion-content>
