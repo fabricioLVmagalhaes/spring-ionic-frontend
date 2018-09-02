@@ -84,10 +84,12 @@ export class SignupPage {
           text: 'OK',
           handler: () => {
             this.navCtrl.pop();
+            
           }
         }
       ]
     });
     alert.present();
+    
   }
 }

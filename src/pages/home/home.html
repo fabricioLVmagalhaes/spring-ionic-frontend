@@ -1,14 +1,13 @@
 <ion-content padding>
   
-  <h3>Sistema de Pedidos</h3>
-
+  
   <img src="assets/imgs/tela-inicial.png" alt="logo">
 
   <form>
       <ion-item>
           <ion-label stacked>email</ion-label>
           <!--campo com binding com objeto creds.email declarado no home.ts-->
-          <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>
+          <ion-input [(ngModel)]="creds.email" [(ngModel)]="email.email" name="email" type="email"></ion-input>
       </ion-item>
       
       <ion-item>
@@ -16,8 +15,9 @@
           <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
       </ion-item>
       <button ion-button block outline (click)="login()">entrar</button>
+      <button ion-button block (click)="forgot()">esqueci a senha</button>
   </form>
-  <button ion-button block (click)="sigup()">registrar</button>
+ 
 
   
 </ion-content>

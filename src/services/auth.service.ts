@@ -6,6 +6,7 @@ import { LocalUser } from "../models/local_user";
 import { StorageService } from "./storage.service";
 import { JwtHelper } from 'angular2-jwt' //componente adicionado com o comando "npm install --save angular2-jwt"
 import { CartService } from "./domain/cart.service";
+import { emailDTO } from "../models/email.dto";
 
 @Injectable()
 export class AuthService {
@@ -27,6 +28,18 @@ export class AuthService {
             observe: `response`,//pegar resposta no header
             responseType: `text`//como o corpo da resposta e vazio, não tentar fazer o parse do json
         });
+    }
+
+    forgot(email : emailDTO){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/auth/forgot`, 
+            email,//dados enviado no post
+            {
+                observe: `response`,
+                responseType: `text`
+            }
+        );
+        
     }
 
     refreshToken(){
