@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Rx";
 import { ClienteDTO } from "../../models/cliente.dto";
 import { API_CONFIG } from "../../config/api.config";
 import { StorageService } from "../storage.service";
+import { FuncionarioDTO } from "../../models/funcionario.dto";
 
 @Injectable()
 export class ClienteService{
@@ -19,6 +20,10 @@ export class ClienteService{
     findByEmail(email: string) {
 
         return this.http.get(`${API_CONFIG.baseUrl}/funcionarios/email?value=${email}`);
+    }
+
+    findAll() : Observable<FuncionarioDTO[]>{
+        return this.http.get<FuncionarioDTO[]>(`${API_CONFIG.baseUrl}/funcionarios`);
     }
 
     insert(obj : ClienteDTO) {

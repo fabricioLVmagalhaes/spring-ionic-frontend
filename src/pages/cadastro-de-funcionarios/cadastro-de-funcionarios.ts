@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CadastroDeFuncionariosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FuncionarioDTO } from '../../models/funcionario.dto';
+import { ClienteService } from '../../services/domain/cliente.service';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CadastroDeFuncionariosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items : FuncionarioDTO[];
+
+  
+
+  constructor(
+              public navCtrl: NavController, 
+              public navParams: NavParams,
+              public clienteService: ClienteService              
+            ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroDeFuncionariosPage');
+    this.clienteService.findAll()
+      .subscribe(response => {
+        this.items = response;
+      },
+    error => { });
+    //console.log('ionViewDidLoad CadastroDeFuncionariosPage');
   }
 
 }
