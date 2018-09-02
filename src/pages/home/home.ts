@@ -64,7 +64,7 @@ export class HomePage {
     this.auth.forgot(this.email)
     .subscribe(responser => {
       this.showResetOk();
-      this.navCtrl.setRoot("HomePage");
+      
     },
     error => {}
     );

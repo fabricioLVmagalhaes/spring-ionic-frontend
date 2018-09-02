@@ -13,17 +13,17 @@ export class ClienteService{
 
     findById(id: string) {
 
-        return this.http.get(`${API_CONFIG.baseUrl}/clientes/${id}`);
+        return this.http.get(`${API_CONFIG.baseUrl}/funcionarios/${id}`);
     }
 
     findByEmail(email: string) {
 
-        return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
+        return this.http.get(`${API_CONFIG.baseUrl}/funcionarios/email?value=${email}`);
     }
 
     insert(obj : ClienteDTO) {
             return this.http.post(
-            `${API_CONFIG.baseUrl}/clientes`,
+            `${API_CONFIG.baseUrl}/funcionarios`,
             obj,
             {
                 observe: 'response',
