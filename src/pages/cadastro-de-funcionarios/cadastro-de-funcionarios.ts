@@ -29,5 +29,9 @@ export class CadastroDeFuncionariosPage {
     error => { });
     //console.log('ionViewDidLoad CadastroDeFuncionariosPage');
   }
+  showDetail(funcionario_id : string){ //metodo para abrir pagina ProdutoDetailPage
+    
+    this.navCtrl.push('FuncionarioUpdatePage', {funcionario_id: funcionario_id});
+  }
 
 }

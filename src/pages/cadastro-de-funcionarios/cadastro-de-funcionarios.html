@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CadastroDeFuncionarios</ion-title>
+    <ion-title>cadastro de funcionarios</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,7 +10,7 @@
 <ion-content padding>
   <ion-list>
     <!--botão com metodo para inserir um botão para cada item da lista-->
-   <button ion-item *ngFor="let item of items">
+   <button ion-item *ngFor="let item of items" (click)="showDetail(item.id)">
       <h2>{{ item.nome }}</h2>      
     </button>
   </ion-list>
