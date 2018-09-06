@@ -12,10 +12,14 @@ export class CidadeService{
     }
 
     //metodo para retornar uma lista de cidades de um dado estado
-    findAll(estado_id : string) : Observable<CidadeDTO[]> {
+    findAllByEstadoId(estado_id : string) : Observable<CidadeDTO[]> {
         return this.http.get<CidadeDTO[]>(`${API_CONFIG.baseUrl}/estados/${estado_id}/cidades`);
 }
     findAllByEstado(estado_nome : string) : Observable<CidadeDTO[]> {
     return this.http.get<CidadeDTO[]>(`${API_CONFIG.baseUrl}/estados/${estado_nome}/cidades`);
+}
+
+findAll() : Observable<CidadeDTO[]> {
+    return this.http.get<CidadeDTO[]>(`${API_CONFIG.baseUrl}/cidades`);
 }
 }

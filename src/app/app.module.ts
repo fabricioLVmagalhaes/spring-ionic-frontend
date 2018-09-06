@@ -17,6 +17,8 @@ import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
 import { EstadoService } from '../services/domain/estado.service';
 import { CidadeService } from '../services/domain/cidade.service';
+import { SelectSearchableModule } from 'ionic-select-searchable'
+import { FilialService } from '../services/domain/filial.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { CidadeService } from '../services/domain/cidade.service';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    SelectSearchableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +47,8 @@ import { CidadeService } from '../services/domain/cidade.service';
     ProdutoService,
     CartService,
     CidadeService,
-    EstadoService
+    EstadoService,
+    FilialService
   ]
 })
 export class AppModule {}

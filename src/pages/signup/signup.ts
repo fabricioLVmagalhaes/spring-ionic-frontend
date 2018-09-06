@@ -59,7 +59,7 @@ export class SignupPage {
 
   updateCidades() {
     let estado_id = this.formGroup.value.estadoId;
-    this.cidadeService.findAll(estado_id)
+    this.cidadeService.findAllByEstadoId(estado_id)
       .subscribe(response => {
         this.cidades =  response;
         this.formGroup.controls.cidadeId.setValue(null);
