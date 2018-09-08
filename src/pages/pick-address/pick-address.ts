@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EnderecoDTO } from '../../models/endereco.dto';
 import { StorageService } from '../../services/storage.service';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { CartService } from '../../services/domain/cart.service';
 
@@ -22,7 +22,7 @@ export class PickAddressPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public clienteService: ClienteService,
+    public funcionarioService: FuncionarioService,
     public cartService: CartService
   ) {
   }
@@ -30,14 +30,14 @@ export class PickAddressPage {
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email){
-      this.clienteService.findByEmail(localUser.email)
+      this.funcionarioService.findByEmail(localUser.email)
         .subscribe(response => {
           this.items = response['enderecos']; //['enderecos'] -> especifica o item da resposta que queremos buscar
 
           let cart = this.cartService.getCart();
 
           this.pedido = {
-            cliente: {id: response['id']},//pega só o id do cliente 
+            funcionario: {id: response['id']},//pega só o id do cliente 
             enderecoDeEntrega: null,
             pagamento: null,
             itens: cart.items.map(x => {return{quantidade: x.quantidade, produto: {id: x.produto.id}}})//percorre os items do carrinho retornando o obj no modelo certo

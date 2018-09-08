@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 import { FuncionarioDTO } from '../../models/funcionario.dto';
 import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 import { CidadeService } from '../../services/domain/cidade.service';
@@ -84,7 +84,7 @@ export class FuncionarioUpdatePage {
   constructor(
               public navCtrl: NavController, 
               public navParams: NavParams,
-              public clienteService: ClienteService,
+              public funcionarioService: FuncionarioService,
               public cidadeService: CidadeService,
               public formBuilder: FormBuilder,
               public loadingCtrl: LoadingController,
@@ -121,7 +121,7 @@ export class FuncionarioUpdatePage {
     if (this.funcionario!=null && this.funcionario_id!="" && this.funcionario_id!=undefined){
       
       Observable.forkJoin([ 
-        this.clienteService.findById(this.funcionario_id),
+        this.funcionarioService.findById(this.funcionario_id),
         this.cidadeService.findAll(),
         this.filialService.findAll()     
     ]).subscribe(
@@ -179,7 +179,7 @@ export class FuncionarioUpdatePage {
   }
 
   updateFuncionario(){
-    this.clienteService.update(this.formGroup.value, this.funcionario.id)
+    this.funcionarioService.update(this.formGroup.value, this.funcionario.id)
       .subscribe(response => {
         this.showInsertOk();
       },

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FuncionarioDTO } from '../../models/funcionario.dto';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 
 @IonicPage()
 @Component({
@@ -17,12 +17,12 @@ export class CadastroDeFuncionariosPage {
   constructor(
               public navCtrl: NavController, 
               public navParams: NavParams,
-              public clienteService: ClienteService              
+              public funcionarioService: FuncionarioService              
             ) {
   }
 
   ionViewDidLoad() {
-    this.clienteService.findAll()
+    this.funcionarioService.findAll()
       .subscribe(response => {
         this.items = response;
       },

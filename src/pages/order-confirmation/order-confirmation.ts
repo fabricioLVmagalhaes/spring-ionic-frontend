@@ -3,9 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { CartItem } from '../../models/cart-item';
 import { CartService } from '../../services/domain/cart.service';
-import { ClienteDTO } from '../../models/cliente.dto';
+import { FuncionarioDTO } from '../../models/funcionario.dto';
 import { EnderecoDTO } from '../../models/endereco.dto';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 import { PedidoService } from '../../services/domain/pedido.service';
 
 @IonicPage()
@@ -17,7 +17,7 @@ export class OrderConfirmationPage {
 
   pedido: PedidoDTO;
   cartItems: CartItem[];
-  cliente: ClienteDTO;
+  funcionario: FuncionarioDTO;
   endereco: EnderecoDTO;
   codpedido: string;
 
@@ -25,7 +25,7 @@ export class OrderConfirmationPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public cartService: CartService,
-    public clienteService: ClienteService,
+    public funcionarioService: FuncionarioService,
     public pedidoService: PedidoService
   ) {
 
@@ -35,9 +35,9 @@ export class OrderConfirmationPage {
   ionViewDidLoad() {
     this.cartItems = this.cartService.getCart().items;
 
-    this.clienteService.findById(this.pedido.cliente.id)
+    this.funcionarioService.findById(this.pedido.funcionario.id)
       .subscribe(response => {
-        this.cliente = response as ClienteDTO;
+        this.funcionario = response as FuncionarioDTO;
         this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos'])
       },
     error => {

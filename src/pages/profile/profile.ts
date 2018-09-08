@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
-import { ClienteDTO } from '../../models/cliente.dto';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioDTO } from '../../models/funcionario.dto';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 
 
 @IonicPage()
@@ -12,21 +12,21 @@ import { ClienteService } from '../../services/domain/cliente.service';
 })
 export class ProfilePage {
 
-  cliente : ClienteDTO;
+  funcionario : FuncionarioDTO;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public clienteService: ClienteService) {
+    public funcionarioService: FuncionarioService) {
   }
 
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email){
-      this.clienteService.findByEmail(localUser.email)
+      this.funcionarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.cliente = response as ClienteDTO; //"as ClienteDTO -> casting"
+          this.funcionario = response as FuncionarioDTO; //"as FuncionarioDTO -> casting"
         },
       error =>{
         if (error.status == 403) {

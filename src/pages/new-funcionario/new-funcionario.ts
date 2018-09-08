@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 import { FuncionarioDTO } from '../../models/funcionario.dto';
 import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 import { CidadeService } from '../../services/domain/cidade.service';
@@ -84,7 +84,7 @@ export class NewFuncionarioPage {
   constructor(
     public navCtrl: NavController, 
               public navParams: NavParams,
-              public clienteService: ClienteService,
+              public funcionarioService: FuncionarioService,
               public cidadeService: CidadeService,
               public formBuilder: FormBuilder,
               public loadingCtrl: LoadingController,
@@ -160,7 +160,7 @@ export class NewFuncionarioPage {
   
 
   insertFuncionario(){
-    this.clienteService.insert(this.formGroup.value)
+    this.funcionarioService.insert(this.formGroup.value)
       .subscribe(response => {
         this.showInsertOk();
       },

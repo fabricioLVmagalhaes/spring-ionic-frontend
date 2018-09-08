@@ -11,7 +11,7 @@ import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
-import { ClienteService } from '../services/domain/cliente.service';
+import { FuncionarioService } from '../services/domain/funcionario.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
@@ -45,7 +45,7 @@ import { PerfilService } from '../services/domain/perfil.service';
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    ClienteService,
+    FuncionarioService,
     ProdutoService,
     CartService,
     CidadeService,

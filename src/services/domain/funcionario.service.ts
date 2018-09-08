@@ -7,7 +7,7 @@ import { StorageService } from "../storage.service";
 import { FuncionarioDTO } from "../../models/funcionario.dto";
 
 @Injectable()
-export class ClienteService{
+export class FuncionarioService{
 
     constructor(public http: HttpClient, public storage: StorageService){
     }
@@ -26,7 +26,7 @@ export class ClienteService{
         return this.http.get<FuncionarioDTO[]>(`${API_CONFIG.baseUrl}/funcionarios`);
     }
 
-    insert(obj : ClienteDTO) {
+    insert(obj : FuncionarioDTO) {
             return this.http.post(
             `${API_CONFIG.baseUrl}/funcionarios`,
             obj,

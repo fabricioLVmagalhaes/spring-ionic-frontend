@@ -5,7 +5,7 @@ import { CidadeService } from '../../services/domain/cidade.service';
 import { EstadoService } from '../../services/domain/estado.service';
 import { EstadoDTO } from '../../models/estado.dto';
 import { CidadeDTO } from '../../models/cidade.dto';
-import { ClienteService } from '../../services/domain/cliente.service';
+import { FuncionarioService } from '../../services/domain/funcionario.service';
 
 @IonicPage()
 @Component({
@@ -24,7 +24,7 @@ export class SignupPage {
     public formBuilder: FormBuilder,
     public cidadeService: CidadeService,
     public estadoService: EstadoService,
-    public clienteService: ClienteService,
+    public funcionarioService: FuncionarioService,
     public alertCtrl: AlertController  
   ) {
 
@@ -67,7 +67,7 @@ export class SignupPage {
   }
 
   signupUser(){
-    this.clienteService.insert(this.formGroup.value)
+    this.funcionarioService.insert(this.formGroup.value)
       .subscribe(response => {
         this.showInsertOk();
       },
