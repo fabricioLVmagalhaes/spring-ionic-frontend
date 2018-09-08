@@ -27,7 +27,7 @@
 
 <ion-content padding>
   <div [ngSwitch]="cadastro">
-      <form [formGroup]="formGroup" (ngSubmit)="updateUser(); $event.preventDefault()">
+      <form [formGroup]="formGroup" (ngSubmit)="updateFuncionario(); $event.preventDefault()">
         <div *ngSwitchCase="'dadosPessoais'">
           <ion-item>
             <ion-label stacked>Nome*</ion-label>
@@ -80,16 +80,13 @@
               <ion-label stacked>Cidade</ion-label>
               <select-searchable
                 
-                formControlName="cidadeId"
+                formControlName="cidade"
                 item-content
                 [items]="cidades"
                 searchPlaceholder="digite o nome da cidade"
                 itemValueField="id"
                 itemTextField="nome"
-                [canSearch]="true"
-                (onChange)="userChanged($event)"         
-                (onClose)="onClose"
-                [shouldStoreItemValue]="true"
+                [canSearch]="true"                
               >
             </select-searchable>
           </ion-item> 
@@ -110,13 +107,22 @@
                 </ion-card-header>
               
                 <ion-card-content>
-                    <ion-list>
-                        <!--botão com metodo para inserir um botão para cada item da lista-->
-                          <ion-item *ngFor="let item of items">
-                            <ion-label>{{ item.nome }}</ion-label> 
-                            <ion-checkbox color="dark" checked="true"></ion-checkbox>     
-                          </ion-item>
-                </ion-list>
+                    <ion-item>
+                        <select-searchable
+                          item-content
+                          formControlName="filiais"
+                          [isMultiple]="true"
+                          [items]="filiais"
+                          itemValueField="id"
+                          itemTextField="nome"
+                          cancelButtonText="Cancelar"
+                          closeButtonText="Cancelar"
+                          clearButtonText="Limpar seleção"                          
+                          [canClear]="true"
+                        >
+                        </select-searchable>
+                          
+                      </ion-item>
                 
                 </ion-card-content>
               
@@ -130,21 +136,22 @@
                 
                   <ion-card-content>
                       <ion-item>
-                          <ion-label>Execução de serviços</ion-label>
-                          <ion-checkbox color="dark" checked="true"></ion-checkbox>
-                        </ion-item>                        
-                        <ion-item>
-                          <ion-label>Vendas</ion-label>
-                          <ion-checkbox></ion-checkbox>
-                        </ion-item>
-                        <ion-item>
-                          <ion-label>Gerencial</ion-label>
-                          <ion-checkbox></ion-checkbox>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Adiministrativo</ion-label>
-                            <ion-checkbox></ion-checkbox>
-                          </ion-item>
+                        <select-searchable
+                          item-content
+                          formControlName="perfis"
+                          [isMultiple]="true"
+                          [items]="perfis"
+                          itemValueField="id"
+                          itemTextField="descricao"
+                          cancelButtonText="Cancelar"
+                          closeButtonText="Cancelar"
+                          clearButtonText="Limpar seleção"
+                          [shouldStoreItemValue]="true"
+                          [canClear]="true"
+                        >
+                        </select-searchable>
+                          
+                      </ion-item>
                   </ion-card-content>
                 
                 </ion-card>

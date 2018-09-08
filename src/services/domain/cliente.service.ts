@@ -37,4 +37,15 @@ export class ClienteService{
         );
     }
 
+    update(obj : FuncionarioDTO, id: string) {
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/funcionarios/${id}`,
+            obj,
+            {
+                observe: 'response',
+                responseType: 'text'// tipo texto pois o retorno vem com o corpo vazio e poderia dar um erro de parse json
+            }
+        );
+    }
+
 }

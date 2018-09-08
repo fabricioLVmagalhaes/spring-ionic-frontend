@@ -28,6 +28,12 @@ export class ErrorInterceptor implements HttpInterceptor {
             console.log(errorObj);
 
             switch(errorObj.status){
+
+                //trata o erro de requisição
+                case 400:
+                this.handle400();
+                break;
+
                 //trata o erro de autenticacao
                 case 401:
                 this.handle401();
@@ -51,6 +57,21 @@ export class ErrorInterceptor implements HttpInterceptor {
             return Observable.throw(errorObj);
         }) as any;
     }
+
+    handle400(){
+        let alert = this.alertCtrl.create({
+            title: 'Erro 400: requisição invalida',
+            message: 'requisição incorreta',
+            enableBackdropDismiss: false,
+            buttons: [
+                {
+                    text: 'OK'
+                }
+            ]
+        });
+        alert.present();
+    }
+
     handle401(){
         let alert = this.alertCtrl.create({
             title: 'Erro 401: falha de autenticação',

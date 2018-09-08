@@ -26,7 +26,11 @@ export class CadastroDeFuncionariosPage {
       .subscribe(response => {
         this.items = response;
       },
-    error => { });
+    error =>{
+      if (error.status == 403) {
+        this.navCtrl.setRoot('HomePage');
+      }
+    });
     //console.log('ionViewDidLoad CadastroDeFuncionariosPage');
   }
   showDetail(funcionario_id : string){ //metodo para abrir pagina ProdutoDetailPage
@@ -35,3 +39,5 @@ export class CadastroDeFuncionariosPage {
   }
 
 }
+
+

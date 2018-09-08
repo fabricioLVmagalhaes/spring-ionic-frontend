@@ -19,6 +19,7 @@ import { EstadoService } from '../services/domain/estado.service';
 import { CidadeService } from '../services/domain/cidade.service';
 import { SelectSearchableModule } from 'ionic-select-searchable'
 import { FilialService } from '../services/domain/filial.service';
+import { PerfilService } from '../services/domain/perfil.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FilialService } from '../services/domain/filial.service';
     CartService,
     CidadeService,
     EstadoService,
-    FilialService
+    FilialService,
+    PerfilService
   ]
 })
 export class AppModule {}
