@@ -21,6 +21,7 @@ import { SelectSearchableModule } from 'ionic-select-searchable'
 import { FilialService } from '../services/domain/filial.service';
 import { PerfilService } from '../services/domain/perfil.service';
 
+
 @NgModule({
   declarations: [
     MyApp

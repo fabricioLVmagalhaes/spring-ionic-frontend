@@ -38,6 +38,11 @@ export class CadastroDeFuncionariosPage {
     this.navCtrl.push('FuncionarioUpdatePage', {funcionario_id: funcionario_id});
   }
 
+  createNew(){
+    this.navCtrl.push('NewFuncionarioPage');
+    
+  }
+
 }
 
 
